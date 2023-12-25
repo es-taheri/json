@@ -1,5 +1,8 @@
 # json
 An easy way for using json encoded strings in php.
+## Install
+1. Composer : ``composer require estaheri/json ``
+2. manually : Download it from release page of github and require the class file ``json.php`` in your code.
 ## Questions :
 ### Why should we use this class while php has json methods in it?
 I just wrote this class for making codes more clean and shorter.
