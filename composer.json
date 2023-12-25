@@ -1,0 +1,28 @@
+{
+  "name": "estaheri/json",
+  "description": "An easy way for using json encoded strings in php",
+  "version": "1.0.0",
+  "type": "library",
+  "keywords": [
+    "php",
+    "php api",
+    "json",
+    "json api",
+    "easy json library"
+  ],
+  "homepage": "https://github.com/es-taheri/json",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Esmaeil Taheri",
+      "email": "ta.es1383@gmail.com",
+      "homepage": "https://github.com/es-taheri",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "JSON\\":""
+    }
+  }
+}
