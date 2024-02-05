@@ -29,7 +29,7 @@ class json
      *
      * @return false|string a JSON encoded string on success or FALSE on failure.
      */
-    public static function _out(mixed $data, int $flag = null, int $depth = 512): false|string
+    public static function _out(mixed $data, int $flag = 0, int $depth = 512): false|string
     {
         return json_encode($data, $flag, $depth);
     }
