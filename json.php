@@ -8,6 +8,9 @@ namespace JSON;
  * @author Esmaeil Taheri
  * @license MIT
  * @link https://github.com/es-taheri/json
+ * @method static \array to_array(string|object $data) Convert json encoded string or object to array.<br>Return False on failure.
+ * @method static \string to_json(object|array $data) Convert array or object to json encoded string.<br>>Return False on failure.
+ * @method static \object to_object(string|array $data) Convert json encoded string or array to object.<br>>Return False on failure.
  */
 class json
 {
@@ -171,5 +174,28 @@ class json
         else:
             return false;
         endif;
+    }
+
+    public static function __callStatic(string $name, array $arguments)
+    {
+        $data = array_shift($arguments);
+        return match (true) {
+            self::_is($data) => match ($name) {
+                default => $data,
+                'to_array' => self::_in($data, true),
+                'to_object' => self::_in($data),
+            },
+            is_array($data) => match ($name) {
+                'to_json' => self::_out($data),
+                default => $data,
+                'to_object' => self::_in(self::_out($data)),
+            },
+            is_object($data) => match ($name) {
+                'to_json' => self::_out($data),
+                'to_array' => self::_in(self::_out($data), true),
+                default => $data,
+            },
+            default => false
+        };
     }
 }
