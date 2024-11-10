@@ -76,22 +76,22 @@ class json
     /**
      * Check if a string is json encoded string or not?
      *
-     * @param string $string
-     * string to being checked
+     * @param mixed $data
+     * mixed data to being checked
      * @return bool
      * <code>TRUE</code> if the string is json encoded or <code>FALSE</code> if not.
      */
-    public static function _is(string $string): bool
+    public static function _is(mixed $data): bool
     {
-        if (is_numeric($string)) {
-            if (is_object($string) === false) {
+        if (is_string($data)) {
+            if (is_numeric($data)) {
                 return false;
             } else {
-                return true;
+                json_decode($data);
+                return json_last_error() === JSON_ERROR_NONE;
             }
         } else {
-            json_decode($string);
-            return json_last_error() === JSON_ERROR_NONE;
+            return false;
         }
     }
 
