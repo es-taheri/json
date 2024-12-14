@@ -107,19 +107,19 @@ class json
      */
     public static function update(string $data, array $update): false|string
     {
-        if (self::_is($data)):
+        if (self::_is($data)) {
             $data = self::_in($data, true);
             if (array_values($update) === $update):
                 $data[] = $update;
             else:
-                foreach ($data as $key => $value):
+                foreach ($update as $key => $value):
                     $data[$key] = $value;
                 endforeach;
             endif;
             return self::_out($data);
-        else:
+        } else {
             return false;
-        endif;
+        }
     }
 
     /**
