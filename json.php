@@ -40,7 +40,7 @@ class json
     /**
      * Decodes a JSON string
      *
-     * @param mixed $data
+     * @param string $data
      * The json string being decoded.
      * This function only works with UTF-8 encoded strings.
      * PHP implements a superset of JSON - it will also encode and decode scalar types and NULL.
@@ -65,9 +65,8 @@ class json
      * Values true, false and null (case-insensitive) are returned as TRUE, FALSE and NULL respectively.
      * NULL is returned if the json cannot be decoded or if the encoded data is deeper than the recursion limit.
      */
-    public static function _in(mixed $data, bool $associative = null, int $depth = 512, int $flags = 0): mixed
+    public static function _in(string $data, bool $associative = null, int $depth = 512, int $flags = 0): mixed
     {
-        if (is_object($data)) $data = json_encode($data);
         $out = json_decode($data, $associative, $depth, $flags);
         if ($associative && !is_array($out)) $out = json_decode($out, true);
         return $out;
